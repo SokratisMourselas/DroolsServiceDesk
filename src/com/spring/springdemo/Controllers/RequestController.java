@@ -22,6 +22,6 @@ public class RequestController {
 
     @RequestMapping("/addRequest-form")
     public String addNewRequestForm(Model theModel){
-        return "proceed";
+        return "actions-page";
     }
 }
