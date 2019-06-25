@@ -36,6 +36,10 @@
     <input type="submit" value="New Request">
 </form:form>
 
+<form:form action="/requests/viewAllRequests" >
+    <input type="submit" value="View All Requests">
+</form:form>
+
 
 
 </body>
