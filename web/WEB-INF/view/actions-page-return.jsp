@@ -13,14 +13,14 @@
 </head>
 <body>
 <h1>Drools Service Desk (Local Version)</h1>
-<br><br>
+<br>
 <i class="correct"> <b>Message sent Successfully!</b></i>
 <br><br>
 
 <u>Message Content:</u> <br><br>
     Project Name: <b>${newRequest.projectName}</b><br>
     Directed To: <b>${newRequest.teamDirectedTo}</b><br><br>
-    Message Body:<br> <textarea rows="5" cols="80" readonly>${newRequest.message}</textarea><br>
+    Message Body:<br> <textarea rows="5" cols="80" readonly>${newRequest.message.trim().length()>0? newRequest.message.trim(): "Empty Body..."}</textarea><br>
 
 <br><br>
 <i>How would you like to proceed ${user.username!= null? user.username : "Username will appear here..."}?</i>
