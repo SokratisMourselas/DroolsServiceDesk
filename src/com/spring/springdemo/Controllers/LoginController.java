@@ -6,6 +6,7 @@ import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import javax.validation.Valid;
 
@@ -26,6 +27,7 @@ public class LoginController {
         if (theBindingResult.hasErrors()){
             return "proceed";
         } else {
+//            System.out.println("LoginController.class >> The username is set to: "+ theUser.getUsername());
             return "actions-page";
         }
     }

@@ -17,10 +17,15 @@
 <i>How would you like to proceed ${user.username}?</i>
 <hr>
 
-<ul>
-    <li><a href="/requests/addRequest">New Request</a></li>
-    <li><a href="/requests/listOfRequests">List of requests</a></li>
-</ul>
+<%--<ul>--%>
+    <%--<li><a href="/requests/addRequest">New Request</a></li>--%>
+    <%--<li><a href="/requests/listOfRequests">List of requests</a></li>--%>
+<%--</ul>--%>
+
+<form:form action="/requests/addRequest" modelAttribute="user">
+    <form:input path="username" readonly="true"/>
+    <input type="submit" value="New Request">
+</form:form>
 
 
 </body>

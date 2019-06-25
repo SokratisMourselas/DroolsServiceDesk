@@ -1,10 +1,7 @@
 package com.spring.springdemo.Model;
 
-import org.springframework.beans.factory.annotation.Autowired;
-
 public class Request {
 
-    @Autowired
     private User user;
 
     private String teamDirectedTo;

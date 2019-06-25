@@ -16,10 +16,6 @@
 <br><br>
 <hr>
 
-
-
-
-
     <form:form action="/requests/addRequest-form" modelAttribute="newRequest">
 
         Related Project: <form:select path="projectName">

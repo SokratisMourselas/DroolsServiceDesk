@@ -1,8 +1,10 @@
 package com.spring.springdemo.Controllers;
 
 import com.spring.springdemo.Model.Request;
+import com.spring.springdemo.Model.User;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
@@ -10,7 +12,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 public class RequestController {
 
     @RequestMapping("/addRequest")
-    public String addNewRequest(Model theModel){
+    public String addNewRequest(@ModelAttribute("user") User theUser, Model theModel){
+
+//        System.out.println("RequestController.class >> The username is set to: "+ theUser.getUsername());
 
         Request theRequest = new Request();
 
