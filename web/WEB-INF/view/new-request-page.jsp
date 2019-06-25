@@ -18,6 +18,9 @@
 
     <form:form action="/requests/addRequest-form" modelAttribute="newRequest">
 
+        Sender: <form:input path="user.username" />
+        <br><br>
+
         Related Project: <form:select path="projectName">
         <form:option value="AES 1.1">AES 1.1</form:option>
         <form:option value="NCTS 5.1">NCTS 5.1</form:option>

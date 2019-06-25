@@ -18,6 +18,8 @@ public class RequestController {
 
         Request theRequest = new Request();
 
+        theRequest.setUser(theUser);
+
         theModel.addAttribute("newRequest", theRequest);
 
         return "new-request-page";
@@ -25,7 +27,13 @@ public class RequestController {
     }
 
     @RequestMapping("/addRequest-form")
-    public String addNewRequestForm(Model theModel){
-        return "actions-page";
+    public String addNewRequestForm(@ModelAttribute("newRequest") Request requestMessage, Model theModel){
+
+//        System.out.println("Message: "+ requestMessage.getMessage());
+//        System.out.println("Message creator: "+ requestMessage.getUser().getUsername());
+
+        theModel.addAttribute("user", new User(requestMessage.getUser().getUsername()));
+
+        return "actions-page-return";
     }
 }
