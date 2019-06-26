@@ -6,6 +6,8 @@ public class Request {
 
     private String teamDirectedTo;
 
+    private String rule;
+
     private String message;
 
     private String projectName;
@@ -19,6 +21,14 @@ public class Request {
 
     public void setProjectName(String projectName) {
         this.projectName = projectName;
+    }
+
+    public String getRule() {
+        return rule;
+    }
+
+    public void setRule(String rule) {
+        this.rule = rule;
     }
 
     public User getUser() {

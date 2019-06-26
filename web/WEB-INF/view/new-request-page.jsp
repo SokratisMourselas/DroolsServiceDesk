@@ -38,6 +38,10 @@
     </form:select>
         <br><br>
 
+        Rule: <form:input path="rule" />
+        <br><br>
+
+
 
         Message body:<br> <form:textarea cols="100" rows="5" path="message"/>
     <form:errors path="message" cssClass="error"/>

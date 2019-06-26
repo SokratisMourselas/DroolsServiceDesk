@@ -15,7 +15,7 @@
 <h1>Actions Page</h1>
 <i class="correct"> Logged in Successfully!</i>
 <br><br>
-<i>How would you like to proceed ${user.username!= null? user.username : "Username will appear here..."}?</i>
+<i>How would you like to proceed <b>${user.username!= null? user.username : "Username will appear here..."}</b>?</i>
 <hr>
 
 <%--<ul>--%>
