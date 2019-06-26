@@ -1,26 +1,33 @@
 package com.spring.springdemo;
 
-import java.sql.Connection;
-import java.sql.DriverManager;
+import com.spring.springdemo.Model.User;
+import org.hibernate.Session;
+import org.hibernate.SessionFactory;
+import org.hibernate.cfg.Configuration;
 
 public class TestJDBC {
 
     public static void main(String[] args) {
 
+        SessionFactory factory = new Configuration().configure("hibernate.cfg.xml").addAnnotatedClass(User.class).buildSessionFactory();
 
-        String jdbcUrl = "jdbc:mysql://localhost:3306/springdrools?useSSL=false&serverTimezone=UTC";
-        String user = "root";
-        String password = "root";
+        Session session = factory.getCurrentSession();
 
         try {
             System.out.println("Connecting to Database");
 
-            Connection myConn = DriverManager.getConnection(jdbcUrl,user, password);
+            User newUser = new User();
+            newUser.setUsername("Sokratis");
+            session.beginTransaction();
+            session.save(newUser);
+            session.getTransaction().commit();
 
             System.out.println("<<Connection successful>>");
 
         } catch (Exception e){
             e.printStackTrace();
+        } finally {
+            factory.close();
         }
     }
 
