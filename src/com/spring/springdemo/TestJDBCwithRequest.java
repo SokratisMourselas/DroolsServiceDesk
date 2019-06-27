@@ -25,6 +25,8 @@ public class TestJDBCwithRequest {
             newUser.setPassword("ExamplePassword");
             newUser.setEmail("example@springMVC.com");
 
+            session.beginTransaction();
+
             session.save(newUser);
 
             // Creating a dummy Request
@@ -36,7 +38,6 @@ public class TestJDBCwithRequest {
             newRequest.setTeamDirectedTo("DEV");
 
             //Beginning Transaction
-            session.beginTransaction();
 
             //Saving the Dummy Request
             session.save(newRequest);
