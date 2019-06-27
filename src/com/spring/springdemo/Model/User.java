@@ -26,6 +26,9 @@ public class User {
     @Column(name = "email")
     private String email;
 
+//    @OneToMany(mappedBy = "request")
+//    private Request request;
+
     public User() {
     }
 
