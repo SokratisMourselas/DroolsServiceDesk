@@ -18,16 +18,27 @@ public class User {
     @Column(name = "username")
     private String username;
 
-//    @NotNull(message = "*is required")
-//    @Size(min = 1, message = "*is required")
+    @NotNull(message = "*is required")
+    @Size(min = 1, message = "*is required")
     @Column(name = "password")
     private String password;
+
+    @Column(name = "email")
+    private String email;
 
     public User() {
     }
 
     public User(String username) {
         this.username = username;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
     }
 
     public String getUsername() {
@@ -54,12 +65,14 @@ public class User {
         this.id = id;
     }
 
+
     @Override
     public String toString() {
         return "User{" +
                 "id=" + id +
                 ", username='" + username + '\'' +
                 ", password='" + password + '\'' +
+                ", email='" + email + '\'' +
                 '}';
     }
 }
