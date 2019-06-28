@@ -20,24 +20,23 @@ public class TestJDBCwithRequest {
 
         try {
             // Creating a dummy User
-            User newUser = new User();
-            newUser.setUsername("Sokratis MOURSELAS");
-            newUser.setPassword("ExamplePassword");
-            newUser.setEmail("example@springMVC.com");
+//            User newUser = new User();
+//            newUser.setUsername("Sokratis MOURSELAS");
+//            newUser.setPassword("ExamplePassword");
+//            newUser.setEmail("example@springMVC.com");
 
+            //Beginning Transaction
             session.beginTransaction();
 
-            session.save(newUser);
+            User newUser = session.get(User.class,3 );
 
             // Creating a dummy Request
             Request newRequest = new Request();
             newRequest.setUser(newUser);
-            newRequest.setMessage("Dummy message from a dummy user");
-            newRequest.setProjectName("AES 1.1");
-            newRequest.setRule("E1837");
+            newRequest.setMessage("Another dummy message from a dummy user");
+            newRequest.setProjectName("NCTS 5.1");
+            newRequest.setRule("C0557");
             newRequest.setTeamDirectedTo("DEV");
-
-            //Beginning Transaction
 
             //Saving the Dummy Request
             session.save(newRequest);

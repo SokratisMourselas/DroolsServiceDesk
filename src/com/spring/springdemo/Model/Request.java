@@ -11,6 +11,7 @@ public class Request {
     @Column(name = "id")
     private int id;
 
+    // NOT: (cascade = CascadeType.ALL)
     @ManyToOne
     @JoinColumn(name = "userId")
     private User user;
