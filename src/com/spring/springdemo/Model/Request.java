@@ -12,7 +12,7 @@ public class Request {
     private int id;
 
     // NOT: (cascade = CascadeType.ALL)
-    @ManyToOne(cascade = {CascadeType.PERSIST, CascadeType.MERGE,
+    @ManyToOne(fetch = FetchType.LAZY, cascade = {CascadeType.PERSIST, CascadeType.MERGE,
                             CascadeType.DETACH, CascadeType.REFRESH})
     @JoinColumn(name = "userId", referencedColumnName = "id", unique = true)
     private User user;

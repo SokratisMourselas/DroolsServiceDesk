@@ -5,6 +5,7 @@ import com.spring.springdemo.Model.User;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
+import org.hibernate.query.Query;
 
 public class TestJDBCwithCascading {
 
@@ -22,18 +23,22 @@ public class TestJDBCwithCascading {
             //Beginning Transaction
             session.beginTransaction();
 
-            theUser = session.get(User.class, 3);
+            Query<User> query = session.createQuery("select i from User i JOIN fetch i.requestList where i.id =:userId", User.class);
+            query.setParameter("userId", 3);
+
+//            theUser = session.get(User.class, 3);
+
+            theUser = query.getSingleResult();
 
             System.out.println(theUser);
             System.out.println(theUser.getRequestList());
 
             session.getTransaction().commit();
-
-            session.close();
-
+            
         } catch (Exception e){
             e.printStackTrace();
         } finally {
+            session.close();
             factory.close();
         }
     }
