@@ -3,7 +3,7 @@ package com.spring.springdemo.Model;
 import javax.persistence.*;
 import javax.validation.constraints.Size;
 import javax.validation.constraints.NotNull;
-import java.util.Collection;
+import java.util.List;
 import java.util.List;
 
 @Entity
@@ -29,7 +29,7 @@ public class User {
     private String email;
 
     @OneToMany(fetch = FetchType.LAZY, mappedBy = "user", cascade = {CascadeType.PERSIST, CascadeType.MERGE,CascadeType.DETACH, CascadeType.REFRESH})
-    private Collection<Request> requestList;
+    private List<Request> requestList;
 
     public User() {
     }
@@ -70,11 +70,11 @@ public class User {
         this.id = id;
     }
 
-    public Collection<Request> getRequestList() {
+    public List<Request> getRequestList() {
         return requestList;
     }
 
-    public void setRequestList(Collection<Request> requestList) {
+    public void setRequestList(List<Request> requestList) {
         this.requestList = requestList;
     }
 

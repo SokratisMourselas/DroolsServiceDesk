@@ -1,6 +1,8 @@
 package com.spring.springdemo.Model;
 
 import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @Table(name = "request")
@@ -16,6 +18,10 @@ public class Request {
                             CascadeType.DETACH, CascadeType.REFRESH})
     @JoinColumn(name = "userId", referencedColumnName = "id", unique = true)
     private User user;
+
+    @OneToMany(fetch =FetchType.LAZY, cascade = CascadeType.ALL)
+    @JoinColumn(name = "requestId")
+    private List<Comment> commentList;
 
     @Column(name = "teamDirectedTo")
     private String teamDirectedTo;
@@ -80,11 +86,30 @@ public class Request {
         this.message = message;
     }
 
+
+    public List<Comment> getCommentList() {
+        return commentList;
+    }
+
+    public void setCommentList(List<Comment> commentList) {
+        this.commentList = commentList;
+    }
+
+    public void addComment(Comment comment){
+
+        if (commentList == null){
+            commentList = new ArrayList<>();
+        }
+
+        commentList.add(comment);
+    }
+
     @Override
     public String toString() {
         return "Request{" +
                 "id=" + id +
                 ", user=" + user +
+                ", commentList=" + commentList +
                 ", teamDirectedTo='" + teamDirectedTo + '\'' +
                 ", rule='" + rule + '\'' +
                 ", message='" + message + '\'' +

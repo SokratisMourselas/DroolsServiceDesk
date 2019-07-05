@@ -1,5 +1,6 @@
 package com.spring.springdemo;
 
+import com.spring.springdemo.Model.Comment;
 import com.spring.springdemo.Model.Request;
 import com.spring.springdemo.Model.User;
 import org.hibernate.Session;
@@ -12,7 +13,7 @@ public class TestJDBCwithCascading {
     public static void main(String[] args) {
 
         System.out.println("\nConnecting to Database");
-        SessionFactory factory = new Configuration().configure("hibernate.cfg.xml").addAnnotatedClass(Request.class).addAnnotatedClass(User.class).buildSessionFactory();
+        SessionFactory factory = new Configuration().configure("hibernate.cfg.xml").addAnnotatedClass(Request.class).addAnnotatedClass(User.class).addAnnotatedClass(Comment.class).buildSessionFactory();
         System.out.println("<<Connection successful>>\n");
 
         Session session = factory.getCurrentSession();
@@ -31,10 +32,10 @@ public class TestJDBCwithCascading {
             theUser = query.getSingleResult();
 
             System.out.println(theUser);
-            System.out.println(theUser.getRequestList());
+            System.out.println(theUser.getRequestList().get(0).getCommentList().get(0).toString());
 
             session.getTransaction().commit();
-            
+
         } catch (Exception e){
             e.printStackTrace();
         } finally {
