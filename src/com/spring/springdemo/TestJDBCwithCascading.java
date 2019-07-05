@@ -15,19 +15,21 @@ public class TestJDBCwithCascading {
         System.out.println("<<Connection successful>>\n");
 
         Session session = factory.getCurrentSession();
+        User theUser = new User();
 
         try {
 
             //Beginning Transaction
             session.beginTransaction();
 
-            User theUser = session.get(User.class, 3);
+            theUser = session.get(User.class, 3);
 
             System.out.println(theUser);
-            //Saving the Dummy Request
-//            session.save(newRequest);
+            System.out.println(theUser.getRequestList());
 
             session.getTransaction().commit();
+
+            session.close();
 
         } catch (Exception e){
             e.printStackTrace();
