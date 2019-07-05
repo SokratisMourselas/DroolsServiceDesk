@@ -12,8 +12,9 @@ public class Request {
     private int id;
 
     // NOT: (cascade = CascadeType.ALL)
-    @ManyToOne
-    @JoinColumn(name = "userId")
+    @ManyToOne(cascade = {CascadeType.PERSIST, CascadeType.MERGE,
+                            CascadeType.DETACH, CascadeType.REFRESH})
+    @JoinColumn(name = "userId", referencedColumnName = "id", unique = true)
     private User user;
 
     @Column(name = "teamDirectedTo")
@@ -77,5 +78,17 @@ public class Request {
 
     public void setMessage(String message) {
         this.message = message;
+    }
+
+    @Override
+    public String toString() {
+        return "Request{" +
+                "id=" + id +
+                ", user=" + user +
+                ", teamDirectedTo='" + teamDirectedTo + '\'' +
+                ", rule='" + rule + '\'' +
+                ", message='" + message + '\'' +
+                ", projectName='" + projectName + '\'' +
+                '}';
     }
 }

@@ -3,6 +3,8 @@ package com.spring.springdemo.Model;
 import javax.persistence.*;
 import javax.validation.constraints.Size;
 import javax.validation.constraints.NotNull;
+import java.util.Collection;
+import java.util.List;
 
 @Entity
 @Table(name = "user")
@@ -26,8 +28,8 @@ public class User {
     @Column(name = "email")
     private String email;
 
-//    @OneToMany(mappedBy = "request")
-//    private Request request;
+    @OneToMany(mappedBy = "user",fetch = FetchType.EAGER, cascade = {CascadeType.PERSIST, CascadeType.MERGE,CascadeType.DETACH, CascadeType.REFRESH})
+    private Collection<Request> requestList;
 
     public User() {
     }
@@ -68,6 +70,13 @@ public class User {
         this.id = id;
     }
 
+    public Collection<Request> getRequestList() {
+        return requestList;
+    }
+
+    public void setRequestList(Collection<Request> requestList) {
+        this.requestList = requestList;
+    }
 
     @Override
     public String toString() {
@@ -76,6 +85,7 @@ public class User {
                 ", username='" + username + '\'' +
                 ", password='" + password + '\'' +
                 ", email='" + email + '\'' +
+                ", requestListSize=" + requestList.size() +
                 '}';
     }
 }
