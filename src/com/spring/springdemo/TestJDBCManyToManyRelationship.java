@@ -46,7 +46,9 @@ public class TestJDBCManyToManyRelationship {
             // creating a comment
             Comment newComment = new Comment();
             newComment.setComment("This comment has been added with two users");
+            // saving the comment
             session.save(newComment);
+            // adding request to the comment
             newComment.setRequest(newRequest);
             newComment.addUser(newUser);
             newComment.addUser(anotherUser);
@@ -55,13 +57,9 @@ public class TestJDBCManyToManyRelationship {
             session.save(newRequest);
             System.out.println("Saved a request to add in comment: "+ newRequest);
 
+            // saving the new User
             session.save(anotherUser);
             System.out.println("Saved another user to add in comment: "+ anotherUser);
-
-
-            // adding comment to the request
-
-            // saving the comment
 
             session.getTransaction().commit();
 
