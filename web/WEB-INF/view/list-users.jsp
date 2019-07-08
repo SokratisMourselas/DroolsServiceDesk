@@ -10,6 +10,8 @@
 <html>
 <head>
     <title>List Users</title>
+
+    <link type="text/css" rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/style.css">
 </head>
 <body>
 
@@ -20,27 +22,28 @@
 
         <div id="container">
 
-            <table>
-                <tr>
-                    <th>Username</th>
-                    <th>Email</th>
-                </tr>
-
-                <!-- loop over and print users -->
-                <c:forEach var="tempUser" items="${users}">
-
+            <div id="content">
+                <table>
                     <tr>
-                        <td>${tempUser.username}</td>
-                        <td>${tempUser.email}</td>
+                        <th>Username</th>
+                        <th>Email</th>
                     </tr>
 
-                </c:forEach>
+                    <!-- loop over and print users -->
+                    <c:forEach var="tempUser" items="${users}">
 
-            </table>
+                        <tr>
+                            <td>${tempUser.username}</td>
+                            <td>${tempUser.email}</td>
+                        </tr>
+
+                    </c:forEach>
+
+                </table>
+            </div>
 
         </div>
     </div>
-
 
 
 </body>
