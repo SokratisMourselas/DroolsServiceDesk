@@ -1,12 +1,11 @@
 package com.spring.springdemo;
 
-import com.spring.springdemo.Model.Comment;
-import com.spring.springdemo.Model.Request;
-import com.spring.springdemo.Model.User;
+import com.spring.springdemo.Entity.Comment;
+import com.spring.springdemo.Entity.Request;
+import com.spring.springdemo.Entity.User;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
-import org.hibernate.query.Query;
 
 public class TestJDBCManyToManyRelationship {
 

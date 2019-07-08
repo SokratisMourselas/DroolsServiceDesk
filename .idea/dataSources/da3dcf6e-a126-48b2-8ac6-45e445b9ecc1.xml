@@ -12704,7 +12704,6 @@ User</ColNames>
     <column id="2424" parent="497" name="requestId">
       <Position>3</Position>
       <DataType>int(11)|0s</DataType>
-      <NotNull>1</NotNull>
       <DefaultExpression>&apos;0&apos;</DefaultExpression>
       <ColumnKind>normal</ColumnKind>
     </column>

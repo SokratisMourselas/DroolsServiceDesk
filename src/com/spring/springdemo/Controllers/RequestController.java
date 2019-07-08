@@ -1,7 +1,7 @@
 package com.spring.springdemo.Controllers;
 
-import com.spring.springdemo.Model.Request;
-import com.spring.springdemo.Model.User;
+import com.spring.springdemo.Entity.Request;
+import com.spring.springdemo.Entity.User;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;

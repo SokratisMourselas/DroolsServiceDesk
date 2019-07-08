@@ -1,4 +1,4 @@
-package com.spring.springdemo.Model;
+package com.spring.springdemo.Entity;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
