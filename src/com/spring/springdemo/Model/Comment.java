@@ -1,6 +1,7 @@
 package com.spring.springdemo.Model;
 
 import javax.persistence.*;
+import java.util.ArrayList;
 import java.util.List;
 
 @Entity
@@ -23,8 +24,35 @@ public class Comment {
     @Column(name = "comment")
     private String comment;
 
+    @ManyToOne
+    @JoinColumn(name = "requestId", referencedColumnName = "id", unique = true)
+    private Request request;
+
 
     public Comment() {
+    }
+
+    public Request getRequest() {
+        return request;
+    }
+
+    public void setRequest(Request request) {
+        this.request = request;
+    }
+
+    public String getComment() {
+        return comment;
+    }
+
+    public void setComment(String comment) {
+        this.comment = comment;
+    }
+
+    public void addUser(User user){
+        if (userList == null){
+            userList = new ArrayList<>();
+        }
+        userList.add(user);
     }
 
     @Override

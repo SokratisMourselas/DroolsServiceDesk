@@ -1,9 +1,8 @@
 package com.spring.springdemo.Model;
 
 import javax.persistence.*;
-import javax.validation.constraints.Size;
 import javax.validation.constraints.NotNull;
-import java.util.List;
+import javax.validation.constraints.Size;
 import java.util.List;
 
 @Entity
@@ -30,6 +29,14 @@ public class User {
 
     @OneToMany(fetch = FetchType.LAZY, mappedBy = "user", cascade = {CascadeType.PERSIST, CascadeType.MERGE,CascadeType.DETACH, CascadeType.REFRESH})
     private List<Request> requestList;
+
+    @ManyToMany
+    @JoinTable(
+            name = "comment_user",
+            joinColumns = @JoinColumn(name = "userId"),
+            inverseJoinColumns = @JoinColumn(name = "commentId")
+    )
+    private List<Comment> commentList;
 
     public User() {
     }
@@ -78,14 +85,13 @@ public class User {
         this.requestList = requestList;
     }
 
-    @Override
-    public String toString() {
-        return "User{" +
-                "id=" + id +
-                ", username='" + username + '\'' +
-                ", password='" + password + '\'' +
-                ", email='" + email + '\'' +
-                ", requestListSize=" + requestList.size() +
-                '}';
+    public List<Comment> getCommentList() {
+        return commentList;
     }
+
+    public void setCommentList(List<Comment> commentList) {
+        this.commentList = commentList;
+    }
+
+
 }
