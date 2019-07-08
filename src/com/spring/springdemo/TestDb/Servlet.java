@@ -13,11 +13,11 @@ import java.sql.DriverManager;
 public class Servlet extends javax.servlet.http.HttpServlet {
 
 
-    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws javax.servlet.ServletException, IOException {
+    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
     }
 
-    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws javax.servlet.ServletException, IOException {
+    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String user = "root";
         String password = "root";
         String jdbcUrl = "jdbc:mysql://localhost:3306/springdrools?useSSL=false&serverTimezone=UTC";
@@ -30,7 +30,7 @@ public class Servlet extends javax.servlet.http.HttpServlet {
             Class.forName(driver);
 
             Connection myConn = DriverManager.getConnection(jdbcUrl, user, password);
-            out.println("Connection Successful!!!!");
+            out.println("CONNECTION SUCCESSFUL!!!!");
             myConn.close();
 
         } catch (Exception e){
