@@ -23,6 +23,12 @@
         <div id="container">
 
             <div id="content">
+
+                <%-- buuton to add new User--%>
+                <input type="button" value="Add User"
+                       onclick="window.location.href='showFormForAdd'; return false;"
+                       class="add-button">
+
                 <table>
                     <tr>
                         <th>Username</th>

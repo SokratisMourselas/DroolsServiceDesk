@@ -7,6 +7,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import java.util.List;
@@ -31,10 +33,23 @@ public class UserController {
 
         return "list-users";
     }
-//
-//    @GetMapping("/processForm")
-//    public String processForm(){
-//        return null;
-//    }
+
+    @GetMapping("/showFormForAdd")
+    public String processForm(Model theModel){
+        //create new model to bind data
+        User newUser = new User();
+        theModel.addAttribute("user", newUser);
+        return "user-form";
+    }
+
+    @PostMapping("/saveUser")
+    public String saveUser(@ModelAttribute("user") User theUser){
+
+        //save customer to database
+        userService.saveUser(theUser);
+
+
+        return "redirect:/users/list";
+    }
 
 }

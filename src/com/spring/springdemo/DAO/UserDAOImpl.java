@@ -23,9 +23,20 @@ public class UserDAOImpl implements UserDAO {
         Session currentSession = sessionFactory.getCurrentSession();
 
         //creating query
-        Query<User> theQuery = currentSession.createQuery("from User", User.class);
+        Query<User> theQuery = currentSession.createQuery("from User order by username", User.class);
 
         // returning results
         return theQuery.getResultList();
+    }
+
+    @Override
+    public void addUser(User theUser) {
+
+        //getting current hibernate session
+        Session currentSession = sessionFactory.getCurrentSession();
+
+        //save User in database
+        currentSession.save(theUser);
+
     }
 }
