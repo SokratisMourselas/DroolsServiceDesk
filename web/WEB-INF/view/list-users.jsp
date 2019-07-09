@@ -7,6 +7,7 @@
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@taglib prefix = "c" uri = "http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <html>
 <head>
     <title>List Users</title>
@@ -43,11 +44,21 @@
                             <c:param name="userId" value="${tempUser.id}"/>
                         </c:url>
 
+
+                        <c:url var="deleteLink" value="/users/delete">
+                            <c:param name="userId" value="${tempUser.id}"/>
+                        </c:url>
+
+
                         <tr>
                             <td>${tempUser.username}</td>
                             <td>${tempUser.email.length() != 0? tempUser.email: "-"}</td>
 
-                            <td><a href="${updateLink}">Update</a> </td>
+                            <td>
+                                <a href="${updateLink}">Update</a>
+                                |
+                                <a href="${deleteLink}" onclick="if (!(confirm('Are you sure you want to delete user with id ${tempUser.id}?'))) return false">Delete</a>
+                            </td>
 
                         </tr>
 

@@ -11,4 +11,6 @@ public interface UserService {
     void saveUser(User theUser);
 
     User getUser(int theId);
+
+    void deleteCustomer(int theId);
 }

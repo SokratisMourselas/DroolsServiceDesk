@@ -67,4 +67,13 @@ public class UserController {
 
         return "user-form";
     }
+
+    @GetMapping("delete")
+    public String deleteUser(@RequestParam("userId") int theId){
+
+        // delete the user
+        userService.deleteCustomer(theId);
+
+        return "redirect:/users/list";
+    }
 }
