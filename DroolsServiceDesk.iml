@@ -16,6 +16,7 @@
         <fileset id="fileset" name="New Dispatcher" removed="false">
           <dependency>web dispatcher servlet context</dependency>
           <file>file://$MODULE_DIR$/web/WEB-INF/new-dispatcher.xml</file>
+          <file>file://$MODULE_DIR$/web/WEB-INF/dispatcher-servlet.xml</file>
         </fileset>
       </configuration>
     </facet>
