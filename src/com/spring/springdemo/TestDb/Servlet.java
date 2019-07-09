@@ -26,14 +26,14 @@ public class Servlet extends javax.servlet.http.HttpServlet {
         //getting connection
         try {
             PrintWriter out = response.getWriter();
-            out.println("Connecting to: "+ jdbcUrl);
+            out.println("Connecting to: " + jdbcUrl);
             Class.forName(driver);
 
             Connection myConn = DriverManager.getConnection(jdbcUrl, user, password);
             out.println("CONNECTION SUCCESSFUL!!!!");
             myConn.close();
 
-        } catch (Exception e){
+        } catch (Exception e) {
             e.printStackTrace();
             throw new ServletException(e);
         }

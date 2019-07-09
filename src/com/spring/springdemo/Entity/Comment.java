@@ -48,8 +48,8 @@ public class Comment {
         this.comment = comment;
     }
 
-    public void addUser(User user){
-        if (userList == null){
+    public void addUser(User user) {
+        if (userList == null) {
             userList = new ArrayList<>();
         }
         userList.add(user);

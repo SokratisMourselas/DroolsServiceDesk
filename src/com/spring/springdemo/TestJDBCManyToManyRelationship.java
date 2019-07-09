@@ -12,10 +12,10 @@ public class TestJDBCManyToManyRelationship {
     public static void main(String[] args) {
 
         System.out.println("\nConnecting to Database");
-        SessionFactory factory = new Configuration().configure("hibernate.cfg.xml") .addAnnotatedClass(Request.class)
-                                                                                    .addAnnotatedClass(User.class)
-                                                                                    .addAnnotatedClass(Comment.class)
-                                                                                    .buildSessionFactory();
+        SessionFactory factory = new Configuration().configure("hibernate.cfg.xml").addAnnotatedClass(Request.class)
+                .addAnnotatedClass(User.class)
+                .addAnnotatedClass(Comment.class)
+                .buildSessionFactory();
         System.out.println("<<Connection successful>>\n");
 
         Session session = factory.getCurrentSession();
@@ -54,15 +54,15 @@ public class TestJDBCManyToManyRelationship {
 
             // saving the new Request
             session.save(newRequest);
-            System.out.println("Saved a request to add in comment: "+ newRequest);
+            System.out.println("Saved a request to add in comment: " + newRequest);
 
             // saving the new User
             session.save(anotherUser);
-            System.out.println("Saved another user to add in comment: "+ anotherUser);
+            System.out.println("Saved another user to add in comment: " + anotherUser);
 
             session.getTransaction().commit();
 
-        } catch (Exception e){
+        } catch (Exception e) {
             e.printStackTrace();
         } finally {
             session.close();

@@ -40,18 +40,18 @@ public class TestJDBC {
             String customHQLQuery = "from User u where u.username LIKE '%MOURSELAS'";
 
             try {
-                userFromDb =(User) session.createQuery(customHQLQuery).getSingleResult();
-            } catch (NoResultException n){
+                userFromDb = (User) session.createQuery(customHQLQuery).getSingleResult();
+            } catch (NoResultException n) {
 
             }
 
-            System.out.println("Dummy User successfully retrieved: \n"+ userFromDb);
+            System.out.println("Dummy User successfully retrieved: \n" + userFromDb);
 
             // Truncating table
             session.delete(newUser);
             session.getTransaction().commit();
 
-        } catch (Exception e){
+        } catch (Exception e) {
             e.printStackTrace();
         } finally {
             factory.close();

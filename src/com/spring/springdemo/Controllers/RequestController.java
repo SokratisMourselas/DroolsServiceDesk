@@ -17,7 +17,7 @@ import java.util.Map;
 public class RequestController {
 
     @RequestMapping("/addRequest")
-    public String addNewRequest(@ModelAttribute("user") User theUser, Model theModel){
+    public String addNewRequest(@ModelAttribute("user") User theUser, Model theModel) {
 
 //        System.out.println("RequestController.class >> The username is set to: "+ theUser.getUsername());
 
@@ -32,7 +32,7 @@ public class RequestController {
     }
 
     @RequestMapping("/addRequest-form")
-    public String addNewRequestForm(@ModelAttribute("newRequest") Request requestMessage, Model theModel){
+    public String addNewRequestForm(@ModelAttribute("newRequest") Request requestMessage, Model theModel) {
 
 //        System.out.println("Message: "+ requestMessage.getMessage());
 //        System.out.println("Message creator: "+ requestMessage.getUser().getUsername());
@@ -43,10 +43,10 @@ public class RequestController {
     }
 
     @RequestMapping("/viewAllRequests")
-    public String viewAllRequests(Model theModel){
+    public String viewAllRequests(Model theModel) {
         List<Request> listOfRequests = createMockListOfRequests();
 
-        Map<Integer,Request> mapOfRequests = new HashMap<Integer,Request>();
+        Map<Integer, Request> mapOfRequests = new HashMap<Integer, Request>();
 
         mapOfRequests.put(1, listOfRequests.get(0));
         mapOfRequests.put(2, listOfRequests.get(1));
@@ -54,8 +54,6 @@ public class RequestController {
         theModel.addAttribute("listOfRequests", mapOfRequests);
         return "list-of-requests";
     }
-
-
 
 
     private List<Request> createMockListOfRequests() {

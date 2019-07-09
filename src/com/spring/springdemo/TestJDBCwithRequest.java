@@ -26,7 +26,7 @@ public class TestJDBCwithRequest {
             //Beginning Transaction
             session.beginTransaction();
 
-            User newUser = session.get(User.class,3 );
+            User newUser = session.get(User.class, 3);
 
             // Creating a dummy Request
             Request newRequest = new Request();
@@ -41,7 +41,7 @@ public class TestJDBCwithRequest {
 
             session.getTransaction().commit();
 
-        } catch (Exception e){
+        } catch (Exception e) {
             e.printStackTrace();
         } finally {
             factory.close();

@@ -14,16 +14,17 @@ import javax.validation.Valid;
 public class LoginController {
 
     @RequestMapping("/proceed")
-    public String goToLoginPage(Model theModel){
+    public String goToLoginPage(Model theModel) {
 
         User theUser = new User();
         theModel.addAttribute("user", theUser);
         return "proceed";
     }
-    @RequestMapping("/loginForm")
-    public String loginUser(@Valid @ModelAttribute("user") User theUser, BindingResult theBindingResult){
 
-        if (theBindingResult.hasErrors()){
+    @RequestMapping("/loginForm")
+    public String loginUser(@Valid @ModelAttribute("user") User theUser, BindingResult theBindingResult) {
+
+        if (theBindingResult.hasErrors()) {
             return "proceed";
         } else {
 //            System.out.println("LoginController.class >> The username is set to: "+ theUser.getUsername());

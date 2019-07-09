@@ -15,11 +15,11 @@ public class Request {
 
     // NOT: (cascade = CascadeType.ALL)
     @ManyToOne(fetch = FetchType.LAZY, cascade = {CascadeType.PERSIST, CascadeType.MERGE,
-                            CascadeType.DETACH, CascadeType.REFRESH})
+            CascadeType.DETACH, CascadeType.REFRESH})
     @JoinColumn(name = "userId", referencedColumnName = "id", unique = true)
     private User user;
 
-    @OneToMany(fetch =FetchType.LAZY, cascade = CascadeType.ALL)
+    @OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     @JoinColumn(name = "requestId")
     private List<Comment> commentList;
 
@@ -95,9 +95,9 @@ public class Request {
         this.commentList = commentList;
     }
 
-    public void addComment(Comment comment){
+    public void addComment(Comment comment) {
 
-        if (commentList == null){
+        if (commentList == null) {
             commentList = new ArrayList<>();
         }
 

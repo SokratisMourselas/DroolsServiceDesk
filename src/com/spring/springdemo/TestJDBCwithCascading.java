@@ -36,7 +36,7 @@ public class TestJDBCwithCascading {
 
             session.getTransaction().commit();
 
-        } catch (Exception e){
+        } catch (Exception e) {
             e.printStackTrace();
         } finally {
             session.close();

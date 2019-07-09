@@ -22,7 +22,7 @@ public class UserController {
 
 
     @GetMapping("/list")
-    public String listCustomers(Model theModel){
+    public String listCustomers(Model theModel) {
 
         //get users from dao
         List<User> theUsers = userService.getUsers();
@@ -34,7 +34,7 @@ public class UserController {
     }
 
     @GetMapping("/showFormForAdd")
-    public String processForm(Model theModel){
+    public String processForm(Model theModel) {
         //create new model to bind data
         User newUser = new User();
         theModel.addAttribute("user", newUser);
@@ -42,9 +42,9 @@ public class UserController {
     }
 
     @PostMapping("/saveUser")
-    public String saveUser(@Valid @ModelAttribute("user") User theUser, BindingResult theBindingResult){
+    public String saveUser(@Valid @ModelAttribute("user") User theUser, BindingResult theBindingResult) {
 
-        if (theBindingResult.hasErrors()){
+        if (theBindingResult.hasErrors()) {
             return "user-form";
         }
 
@@ -55,7 +55,7 @@ public class UserController {
     }
 
     @GetMapping("/showFormForUpdate")
-    public String showFormForUpdate(@RequestParam("userId") int theId, Model theModel){
+    public String showFormForUpdate(@RequestParam("userId") int theId, Model theModel) {
 
         //get User from database
         User theUser = userService.getUser(theId);
@@ -69,7 +69,7 @@ public class UserController {
     }
 
     @GetMapping("delete")
-    public String deleteUser(@RequestParam("userId") int theId){
+    public String deleteUser(@RequestParam("userId") int theId) {
 
         // delete the user
         userService.deleteUser(theId);
@@ -79,7 +79,7 @@ public class UserController {
 
     @GetMapping("/search")
     public String searchUsers(@RequestParam("theSearchName") String theSearchName,
-                                  Model theModel) {
+                              Model theModel) {
 
         // search customers from the service
         List<User> theUsers = userService.searchUsers(theSearchName);
