@@ -55,7 +55,7 @@
         </form:form>
     </div>
 
-    <div style="clear; both;"></div>
+    <div style="clear: both;"></div>
 
     <p>
         <a href="${pageContext.request.contextPath}/users/list">Back to List</a>
