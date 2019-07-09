@@ -12,5 +12,7 @@ public interface UserService {
 
     User getUser(int theId);
 
-    void deleteCustomer(int theId);
+    void deleteUser(int theId);
+
+    List<User> searchUsers(String theSearchName);
 }

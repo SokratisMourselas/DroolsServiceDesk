@@ -30,6 +30,12 @@
                        onclick="window.location.href='showFormForAdd'; return false;"
                        class="add-button">
 
+                    <form:form action="search" method="GET">
+                        Search user: <input type="text" name="theSearchName" />
+
+                        <input type="submit" value="Search" class="add-button" />
+                    </form:form>
+
                 <table>
                     <tr>
                         <th>Username</th>

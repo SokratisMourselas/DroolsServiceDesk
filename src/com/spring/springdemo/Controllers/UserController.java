@@ -72,8 +72,21 @@ public class UserController {
     public String deleteUser(@RequestParam("userId") int theId){
 
         // delete the user
-        userService.deleteCustomer(theId);
+        userService.deleteUser(theId);
 
         return "redirect:/users/list";
+    }
+
+    @GetMapping("/search")
+    public String searchUsers(@RequestParam("theSearchName") String theSearchName,
+                                  Model theModel) {
+
+        // search customers from the service
+        List<User> theUsers = userService.searchUsers(theSearchName);
+
+        // add the customers to the model
+        theModel.addAttribute("users", theUsers);
+
+        return "list-users";
     }
 }

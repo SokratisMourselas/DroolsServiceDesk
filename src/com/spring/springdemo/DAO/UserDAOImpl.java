@@ -66,4 +66,32 @@ public class UserDAOImpl implements UserDAO {
         //confirm deleted User in database
         theQuery.executeUpdate();
     }
+
+    @Override
+    public List<User> searchUsers(String theSearchName) {
+
+        // get the current hibernate session
+        Session currentSession = sessionFactory.getCurrentSession();
+
+        Query<User> theQuery;
+
+        //
+        // only search by name if theSearchName is not empty
+        //
+        if (theSearchName != null && theSearchName.trim().length() > 0) {
+
+            // search for firstName or lastName ... case insensitive
+            theQuery =currentSession.createQuery("from User where lower(username) like :theName order by username", User.class);
+            theQuery.setParameter("theName", "%" + theSearchName.toLowerCase() + "%");
+
+        }
+        else {
+            // theSearchName is empty ... so just get all customers
+            theQuery =currentSession.createQuery("from User order by username", User.class);
+        }
+
+        // execute query and get result list
+        // return the results
+        return theQuery.getResultList();
+    }
 }
