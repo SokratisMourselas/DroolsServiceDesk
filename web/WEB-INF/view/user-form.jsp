@@ -12,7 +12,9 @@
     <title>Add User</title>
     <link type="text/css" rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/style.css">
     <link type="text/css" rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/add-customer-style.css">
-
+    <style>
+        .error{color: red}
+    </style>
 </head>
 <body>
 
@@ -26,15 +28,19 @@
         <h3>Add User</h3>
 
         <form:form action="saveUser" modelAttribute="user" method="post">
+
+            <%--assosiating this data to the user id--%>
+            <form:hidden path="id"/>
+
             <table>
                 <tbody>
                     <tr>
                         <td><label>Username: </label></td>
-                        <td><form:input path="username" /></td>
+                        <td><form:input path="username" /><form:errors path="username" cssClass="error"/></td>
                     </tr>
                     <tr>
                         <td><label>Password: </label></td>
-                        <td><form:input path="password" /></td>
+                        <td><form:input path="password" /><form:errors path="password" cssClass="error"/></td>
                     </tr>
                     <tr>
                         <td><label>Email: </label></td>

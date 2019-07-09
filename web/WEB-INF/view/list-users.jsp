@@ -33,14 +33,22 @@
                     <tr>
                         <th>Username</th>
                         <th>Email</th>
+                        <th>Action</th>
                     </tr>
 
                     <!-- loop over and print users -->
                     <c:forEach var="tempUser" items="${users}">
 
+                        <c:url var="updateLink" value="/users/showFormForUpdate">
+                            <c:param name="userId" value="${tempUser.id}"/>
+                        </c:url>
+
                         <tr>
                             <td>${tempUser.username}</td>
-                            <td>${tempUser.email}</td>
+                            <td>${tempUser.email.length() != 0? tempUser.email: "-"}</td>
+
+                            <td><a href="${updateLink}">Update</a> </td>
+
                         </tr>
 
                     </c:forEach>

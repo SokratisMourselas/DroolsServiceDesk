@@ -6,11 +6,10 @@ import com.spring.springdemo.Services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
 import java.util.List;
 
 @Component
@@ -43,13 +42,29 @@ public class UserController {
     }
 
     @PostMapping("/saveUser")
-    public String saveUser(@ModelAttribute("user") User theUser){
+    public String saveUser(@Valid @ModelAttribute("user") User theUser, BindingResult theBindingResult){
+
+        if (theBindingResult.hasErrors()){
+            return "user-form";
+        }
 
         //save customer to database
         userService.saveUser(theUser);
 
-
         return "redirect:/users/list";
     }
 
+    @GetMapping("/showFormForUpdate")
+    public String showFormForUpdate(@RequestParam("userId") int theId, Model theModel){
+
+        //get User from database
+        User theUser = userService.getUser(theId);
+
+        //set user as a model attribute to pre-populate
+        theModel.addAttribute("user", theUser);
+
+        //send over to the form
+
+        return "user-form";
+    }
 }

@@ -9,4 +9,6 @@ public interface UserDAO {
     List<User> getUsers();
 
     void addUser(User theUser);
+
+    User getUser(int theId);
 }
