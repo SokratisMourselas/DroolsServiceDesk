@@ -17,7 +17,7 @@ public class MainDemoApp {
 
         //adding account to check @Before Aspect expression
         accountDAO.addAccount();
-        membershipDAO.addAccount();
+        membershipDAO.addMember();
         context.close();
 
     }
