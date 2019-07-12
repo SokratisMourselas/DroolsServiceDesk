@@ -16,7 +16,7 @@ public class MainDemoApp {
         MembershipDAO membershipDAO = context.getBean("membershipDAO", MembershipDAO.class);
 
         //adding account to check @Before Aspect expression
-        accountDAO.addAccount();
+        accountDAO.addAccount(123, "String Placeholder");
         membershipDAO.addMember();
         context.close();
 
