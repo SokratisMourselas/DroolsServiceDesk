@@ -12,13 +12,22 @@ public class MyDemoLoggingAspect {
     @Pointcut("execution(* com.spring.springdemo.DAO.*DAO.add*())")
     private void forDAOPackage(){}
 
+    @Pointcut("execution(* com.spring.springdemo.DAO.*DAO.get*())")
+    private void getter(){}
+
+    @Pointcut("execution(* com.spring.springdemo.DAO.*DAO.set*())")
+    private void setter(){}
+
+    @Pointcut("forDAOPackage() && !(getter() || setter())")
+    private void forDAOPackageNoGetterSetter(){}
+
     @Before("forDAOPackage()")
     public void beforeAddUserAdvice() {
         System.out.println("\n   =======   >>>>> Executing @Before on add*()");
     }
 
-    @Before("forDAOPackage()")
-    public void printAnalytics(){
+    @Before("forDAOPackageNoGetterSetter()")
+    public void printAnalyticsForAddMethods(){
         System.out.println("   =======   >>>>> Performing some API Analytics");
     }
 
