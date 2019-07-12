@@ -1,6 +1,7 @@
 package com.spring.springdemo.DAO;
 
 import org.aspectj.lang.JoinPoint;
+import org.aspectj.lang.annotation.AfterReturning;
 import org.aspectj.lang.annotation.Aspect;
 import org.aspectj.lang.annotation.Before;
 import org.aspectj.lang.annotation.Pointcut;
@@ -29,7 +30,7 @@ public class MyDemoLoggingAspect {
     public void beforeAddUserAdvice(JoinPoint joinPoint) {
 
         MethodSignature methodSig = (MethodSignature) joinPoint.getSignature();
-        System.out.println(" \n " + methodSig + "   =======   >>>>> Executing @Before on add*()");
+        System.out.println(" \n " + methodSig + "\n   =======   >>>>> Executing @Before on add*()");
 
         Object[] args = joinPoint.getArgs();
 
@@ -48,5 +49,18 @@ public class MyDemoLoggingAspect {
     public void printAnalyticsForAddMethods(){
         System.out.println("   =======   >>>>> Performing some API Analytics");
     }
+
+
+    @Pointcut("execution(* com.spring.springdemo.DAO.*DAO.print*(..))")
+    private void forDAOPackageFindMethods(){}
+
+
+    @AfterReturning("forDAOPackageFindMethods()")
+    public void printAnalyticsForAddMethodsOnReturn(JoinPoint joinPoint){
+        MethodSignature methodSig = (MethodSignature) joinPoint.getSignature();
+        System.out.println(methodSig+"   =======   >>>>> Accounts Returned successfully");
+    }
+
+
 
 }
