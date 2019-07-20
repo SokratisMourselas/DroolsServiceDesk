@@ -6,15 +6,17 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<% response.sendRedirect("/users/list");%>
-<%--<html>--%>
-  <%--<head>--%>
-    <%--<title>Drools Service Desk Application</title>--%>
-  <%--</head>--%>
-  <%--<body>--%>
-  <%--<h1>Welcome to Drools Service Desk (Local Version)</h1>--%>
-  <%--<hr>--%>
-  <%--&lt;%&ndash;<a href="/login/proceed">Proceed</a>&ndash;%&gt;--%>
-  <%--<a href="${pageContext.request.contextPath}/users/list">Proceed</a>--%>
-  <%--</body>--%>
-<%--</html>--%>
+<%--<% response.sendRedirect("/users/list");%>--%>
+<html>
+  <head>
+    <title>Drools Service Desk Application</title>
+  </head>
+  <body>
+  <h1>Welcome to Drools Service Desk (Local Version)</h1>
+  <hr>
+  <%--<a href="/login/proceed">Proceed</a>--%>
+  <a href="${pageContext.request.contextPath}/users/list">Proceed</a>
+  <a href="${pageContext.request.contextPath}/accounts/list">Proceed</a>
+
+  </body>
+</html>
